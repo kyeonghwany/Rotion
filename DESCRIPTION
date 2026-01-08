@@ -1,0 +1,22 @@
+Package: notionds
+Title: Query Notion Data Sources into Tibbles
+Version: 0.1.0
+Type: Package
+Authors@R: c(
+    person("OpenAI", role = c("aut", "cre"), email = "devnull@example.com")
+)
+Description: Query Notion data sources (databases) via the Notion API,
+    handle pagination, and coerce page properties into tidy tibbles.
+    Includes helpers for building filters and sorts.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports:
+    httr2,
+    tibble,
+    purrr,
+    rlang
+Suggests:
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
