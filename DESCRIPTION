@@ -1,0 +1,21 @@
+Package: notionds
+Title: Query Notion Data Sources and Return Tibbles
+Version: 0.1.0
+Authors@R: c(
+    person("OpenAI", role = c("aut", "cre"), email = "noreply@openai.com")
+  )
+Description: Query Notion data sources (databases) and return results as tibbles
+    with convenient filtering, sorting, and property coercion helpers.
+License: MIT
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports:
+    httr2,
+    jsonlite,
+    tibble,
+    dplyr,
+    purrr
+Suggests:
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
