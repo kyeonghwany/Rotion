@@ -1,4 +1,4 @@
-Package: notionds
+Package: Rotion
 Title: Query Notion Data Sources and Return Tibbles
 Version: 0.1.0
 Authors@R: c(

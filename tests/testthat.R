@@ -1,4 +1,4 @@
 library(testthat)
-library(notionds)
+library(Rotion)
 
-test_check("notionds")
+test_check("Rotion")
