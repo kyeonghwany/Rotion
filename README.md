@@ -14,9 +14,8 @@ Notion 데이터 소스(데이터베이스)를 조회해 tibble로 반환하는 
 현재는 로컬 또는 Git 저장소에서 설치해 사용할 수 있습니다.
 
 ```r
-# 예시: 로컬 설치
-# install.packages("devtools")
-# devtools::install("/path/to/Rotion")
+install.packages("devtools")
+devtools::install("kyeonghwany/Rotion")
 ```
 
 ## 시작하기
