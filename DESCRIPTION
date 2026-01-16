@@ -17,5 +17,6 @@ Imports:
     dplyr,
     purrr
 Suggests:
+    pkgdown,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
