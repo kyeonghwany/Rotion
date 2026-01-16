@@ -55,6 +55,30 @@ filter_date_on_or_before <- function(property, iso_date_or_datetime) {
   list(property = property, date = list(on_or_before = iso_date_or_datetime))
 }
 
+#' @rdname filter_text_contains
+#' @export
+filter_timestamp_on_or_after <- function(
+  timestamp = c("created_time", "last_edited_time"),
+  iso_date_or_datetime
+) {
+  timestamp <- match.arg(timestamp)
+  filter <- list(timestamp = timestamp)
+  filter[[timestamp]] <- list(on_or_after = iso_date_or_datetime)
+  filter
+}
+
+#' @rdname filter_text_contains
+#' @export
+filter_timestamp_on_or_before <- function(
+  timestamp = c("created_time", "last_edited_time"),
+  iso_date_or_datetime
+) {
+  timestamp <- match.arg(timestamp)
+  filter <- list(timestamp = timestamp)
+  filter[[timestamp]] <- list(on_or_before = iso_date_or_datetime)
+  filter
+}
+
 #' Combine filters with AND
 #'
 #' @param ... Filter objects.

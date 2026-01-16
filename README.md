@@ -50,7 +50,8 @@ library(Rotion)
 
 my_filter <- filter_and(
   filter_text_contains("이름", "프로젝트"),
-  filter_date_on_or_after("시작일", "2025-01-01")
+  filter_date_on_or_after("시작일", "2025-01-01"),
+  filter_timestamp_on_or_after("last_edited_time", "2025-02-01")
 )
 
 my_sorts <- list(
