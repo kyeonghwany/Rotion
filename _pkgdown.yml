@@ -1,0 +1,27 @@
+url: ~
+template:
+  bootstrap: 5
+
+home:
+  title: "Rotion"
+  description: "Query Notion data sources and return results as tibbles with convenient filtering, sorting, and property coercion helpers."
+
+navbar:
+  structure:
+    left:
+      - home
+      - reference
+      - articles
+    right:
+      - github
+
+reference:
+  - title: "Client"
+    contents:
+      - starts_with("notion")
+  - title: "Filters"
+    contents:
+      - starts_with("filter_")
+  - title: "Sorting"
+    contents:
+      - starts_with("sort_")
