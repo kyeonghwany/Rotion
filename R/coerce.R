@@ -96,7 +96,7 @@ notion_prop_value <- function(property) {
     array = {
       items <- value$array %||% list()
       if (length(items) == 0) {
-        return(list())
+        return(list(list()))
       }
       values <- purrr::map(items, notion_prop_value)
       if (all(purrr::map_lgl(values, function(item) is.atomic(item) && !is.list(item)))) {

@@ -69,4 +69,15 @@ test_that("notion_prop_value handles rollup values", {
   rollup_val <- notion_prop_value(rollup_array)
   expect_true(is.list(rollup_val))
   expect_identical(rollup_val[[1]], c(1, 2))
+
+  rollup_empty_array <- list(
+    type = "rollup",
+    rollup = list(
+      type = "array",
+      array = list()
+    )
+  )
+  rollup_empty_val <- notion_prop_value(rollup_empty_array)
+  expect_true(is.list(rollup_empty_val))
+  expect_identical(rollup_empty_val[[1]], list())
 })
