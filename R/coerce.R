@@ -21,18 +21,12 @@ notion_prop_value <- function(property) {
     created_time = value %||% NA_character_,
     last_edited_time = value %||% NA_character_,
     formula = .notion_formula_value(value),
-    relation = {
-      # TODO: expand relation support
-      NA
-    },
+    relation = .notion_relation_value(value),
     people = {
       # TODO: expand people support
       NA
     },
-    rollup = {
-      # TODO: expand rollup support
-      NA
-    },
+    rollup = .notion_rollup_value(value),
     NA
   )
 }
@@ -79,6 +73,37 @@ notion_prop_value <- function(property) {
     number = value$number %||% NA_real_,
     boolean = value$boolean %||% NA,
     date = .notion_date_value(value$date),
+    NA
+  )
+}
+
+.notion_relation_value <- function(value) {
+  if (is.null(value) || length(value) == 0) {
+    return(list(character()))
+  }
+  list(purrr::map_chr(value, function(item) item$id %||% ""))
+}
+
+.notion_rollup_value <- function(value) {
+  if (is.null(value)) {
+    return(NA)
+  }
+  rtype <- value$type %||% ""
+  switch(
+    rtype,
+    number = value$number %||% NA_real_,
+    date = .notion_date_value(value$date),
+    array = {
+      items <- value$array %||% list()
+      if (length(items) == 0) {
+        return(list())
+      }
+      values <- purrr::map(items, notion_prop_value)
+      if (all(purrr::map_lgl(values, function(item) is.atomic(item) && !is.list(item)))) {
+        return(list(unlist(values, use.names = FALSE)))
+      }
+      list(values)
+    },
     NA
   )
 }

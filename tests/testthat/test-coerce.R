@@ -39,7 +39,34 @@ test_that("notion_prop_value handles multi_select and formula", {
   expect_identical(notion_prop_value(formula_prop), "2025-01-01")
 })
 
-test_that("notion_prop_value returns NA for relation placeholder", {
-  relation_prop <- list(type = "relation", relation = list())
-  expect_true(is.na(notion_prop_value(relation_prop)))
+test_that("notion_prop_value handles relation values", {
+  relation_prop <- list(
+    type = "relation",
+    relation = list(
+      list(id = "page-1"),
+      list(id = "page-2")
+    )
+  )
+  relation_val <- notion_prop_value(relation_prop)
+  expect_true(is.list(relation_val))
+  expect_identical(relation_val[[1]], c("page-1", "page-2"))
+})
+
+test_that("notion_prop_value handles rollup values", {
+  rollup_number <- list(type = "rollup", rollup = list(type = "number", number = 4))
+  expect_identical(notion_prop_value(rollup_number), 4)
+
+  rollup_array <- list(
+    type = "rollup",
+    rollup = list(
+      type = "array",
+      array = list(
+        list(type = "number", number = 1),
+        list(type = "number", number = 2)
+      )
+    )
+  )
+  rollup_val <- notion_prop_value(rollup_array)
+  expect_true(is.list(rollup_val))
+  expect_identical(rollup_val[[1]], c(1, 2))
 })
